@@ -1,0 +1,60 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light text-center">
+                        <h3 class="my-0">Edit Your Profile</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form 
+                            class="needs-validation" 
+                            novalidate 
+                            action="/users/<%=user._id %>/profile/edit?_method=PUT" 
+                            method="POST" 
+                            enctype="multipart/form-data"
+                        >
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="user[email]" value="<%= user.email %>" required>
+                                <div class="valid-feedback">Email looks good!</div>
+                                <div class="invalid-feedback">Please provide a valid email.</div>
+                            </div>
+
+                            <!-- Username -->
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="user[username]" value="<%= user.username %>" required>
+                                <div class="valid-feedback">Username looks good!</div>
+                                <div class="invalid-feedback">Please provide a valid username.</div>
+                            </div>
+
+                            <!-- Bio -->
+                            <div class="mb-3">
+                                <label for="bio" class="form-label">Bio</label>
+                                <textarea class="form-control" id="bio" name="user[profile][bio]" rows="3" required><%= user.profile.bio %></textarea>
+                                <div class="valid-feedback">Bio looks good!</div>
+                                <div class="invalid-feedback">Please provide a valid bio.</div>
+                            </div>
+
+                            <!-- Profile Image -->
+                            <div class="mb-3">
+                                <label for="profileImage" class="form-label">Profile Image</label>
+                                <input class="form-control" id="post[image]" name="post[image]" type="file">
+                                <div class="valid-feedback">Profile image looks good!</div>
+                                <div class="invalid-feedback">Please provide a valid profile image.</div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button class="btn btn-primary w-100" type="submit">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
